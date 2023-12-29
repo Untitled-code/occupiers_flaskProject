@@ -9,7 +9,7 @@ app.static_folder = os.path.join(PROJECT_ROOT, 'static')
 db = os.path.join(PROJECT_ROOT, 'database.db')
 
 def get_db_connection():
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect(db)
     conn.row_factory = sqlite3.Row
     return conn
 

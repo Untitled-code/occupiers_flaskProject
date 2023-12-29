@@ -6,6 +6,7 @@ import os
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
 app = Flask(__name__)
 app.static_folder = os.path.join(PROJECT_ROOT, 'static')
+app.templates_folder = os.path.join(PROJECT_ROOT, 'templates')
 db = os.path.join(PROJECT_ROOT, 'database.db')
 
 def get_db_connection():

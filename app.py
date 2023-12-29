@@ -8,7 +8,7 @@ logging.basicConfig(filename='occ_flask_app.log', level=logging.DEBUG, format='%
 logging.debug('Start of program')
 
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
-templates_dir = os.path.join(PROJECT_ROOT, 'templates')
+templates_dir = os.path.join(PROJECT_ROOT, 'templates/')
 app = Flask(__name__, template_folder=templates_dir)
 app.static_folder = os.path.join(PROJECT_ROOT, 'static')
 db = os.path.join(PROJECT_ROOT, 'database.db')
@@ -16,6 +16,7 @@ db = os.path.join(PROJECT_ROOT, 'database.db')
 logging.debug(f"Template folder: {app.template_folder}")
 logging.debug(f"Static folder: {app.static_folder}")
 print(f"Template folder: {app.template_folder}")
+print(f"Static folder: {app.static_folder}")
 
 def get_db_connection():
     conn = sqlite3.connect(db)

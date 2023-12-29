@@ -9,9 +9,9 @@ logging.debug('Start of program')
 
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
 templates_dir = os.path.join(PROJECT_ROOT, 'templates')
-#app = Flask(__name__, template_folder=templates_dir)
-app = Flask(__name__)
-# app.static_folder = os.path.join(PROJECT_ROOT, 'static')
+app = Flask(__name__, template_folder=templates_dir)
+# app = Flask(__name__)
+app.static_folder = os.path.join(PROJECT_ROOT, 'static')
 db = os.path.join(PROJECT_ROOT, 'database.db')
 
 logging.debug(f"Template folder: {app.template_folder}")

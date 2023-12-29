@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} Welcome to FlaskBlog {% endblock %}</h1>
+    <h1>{% block title %} Реєстр російських окупантів, що перебували на території Миколаївської області {% endblock %}</h1>
     {% for post in posts %}
         <a href="{{ url_for('post', post_id=post['id'])}}">
-            <h2>{{ post['title'] }}</h2>
+            <h2>{{ post['FIO'] }}</h2>
         </a>
-        <span class="badge badge-primary">{{ post['created'] }}</span>
+        <span class="badge badge-primary">{{ post['DOB'] }}</span>
+        <span class="badge badge-primary">{{ post['Position'] }}</span>
+
         <hr>
     {% endfor %}
 

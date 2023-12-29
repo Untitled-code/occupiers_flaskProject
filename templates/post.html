@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>{% block title %} {{ post['title'] }} {% endblock %}</h2>
-    <span class="badge badge-primary">{{ post['created'] }}</span>
-    <p>{{ post['content'] }}</p>
+    <h2>{% block title %} {{ post['FIO'] }} {% endblock %}</h2>
+    <span class="badge badge-primary">{{ post['Position'] }}</span>
+    <p>Дата народження: {{ post['DOB'] }}</p>
+    <p>Адреса: {{ post['Address'] }}</p>
+    <p>Телефон: {{ post['Phone_Number'] }}</p>
+    <p>Паспорт: {{ post['Passport'] }}</p>
+    <p>Соцмережі: {{ post['Social_Media'] }}</p>
+    <p>Електрона пошта: {{ post['Email'] }}</p>
+
+    <!-- Include the image -->
+    <img src="{{ url_for('static', filename='images/' + post['Image_File']) }}" alt="{{ post['FIO'] }} Image">
 {% endblock %}

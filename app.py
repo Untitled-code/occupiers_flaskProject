@@ -3,6 +3,8 @@ from flask import Flask, render_template
 from werkzeug.exceptions import abort
 
 app = Flask(__name__)
+app.static_folder = 'static'
+
 
 def get_db_connection():
     conn = sqlite3.connect('database.db')
@@ -29,3 +31,4 @@ def index():
     posts = conn.execute('SELECT * FROM posts').fetchall()
     conn.close()
     return render_template('index.html', posts=posts)
+

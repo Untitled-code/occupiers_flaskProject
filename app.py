@@ -1,10 +1,12 @@
 import sqlite3
 from flask import Flask, render_template
 from werkzeug.exceptions import abort
+import os
 
+PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
 app = Flask(__name__)
-app.static_folder = 'static'
-
+app.static_folder = os.path.join(PROJECT_ROOT, 'static')
+db = os.path.join(PROJECT_ROOT, 'database.db')
 
 def get_db_connection():
     conn = sqlite3.connect('database.db')

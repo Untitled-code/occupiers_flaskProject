@@ -1,0 +1,41 @@
+Activate the Virtual Environment:
+Activate the virtual environment by running the appropriate activation script in the Scripts directory of the virtual environment. Use the following command:
+
+venv\Scripts\activate
+
+You should see the virtual environment name in your command prompt, indicating that the virtual environment is active.
+
+Install Flask and Other Dependencies:
+While the virtual environment is active, you can use pip to install Flask and any other dependencies your app requires. For example:
+
+pip install Flask
+
+Set the FLASK_APP Environment Variable:
+You need to set the FLASK_APP environment variable to point to the Python script that defines your Flask app. For example, if your Flask app is in a file named app.py, you can set the FLASK_APP variable like this:
+
+arduino
+
+set FLASK_APP=app.py
+
+Replace app.py with the actual name of your Flask app file.
+
+Run the Flask App:
+Start your Flask app by running the flask run command:
+
+arduino
+
+flask run
+
+You should see output indicating that your Flask app is running on a local server (typically at http://127.0.0.1:5000/).
+
+Access the App:
+Open a web browser and navigate to http://127.0.0.1:5000/ to access your Flask app. You should see your app's content in the browser.
+
+Deactivate the Virtual Environment (Optional):
+When you're done working on your Flask app, you can deactivate the virtual environment by running:
+
+    deactivate
+
+    This will return your command prompt to the global Python environment.
+
+That's it! You've successfully set up and run a Flask app on Windows using a virtual environment. Remember to activate the virtual environment and set the FLASK_APP variable every time you want to work on your Flask project in that environment.

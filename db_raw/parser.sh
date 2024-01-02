@@ -6,7 +6,7 @@ input_file="test2.txt"
 output_file="output.csv"
 
 # Initialize the output file with headers
-echo "FIO,DOB,Position,Unit,Passport,Passport_Issue_Date,Issued_By,Taxpayer_Number,Social_Security_Number,Address,Phone_Number,Social_Media,Email,Status,Verified,Image_File" > "$output_file"
+echo "FIO,DOB,Position,Unit,Passport,Passport_Issue_Date,Issued_By,Taxpayer_Number,Social_Security_Number,Address,Phone_Number,Social_Media,Email,Status,Verified,Source,Image_File" > "$output_file"
 
 # Process the input file and append to the output file
 awk '
@@ -41,11 +41,12 @@ BEGIN { RS = ""; FS = "\n" }
             else if (key == "Email") key = "Email";
             else if (key == "Статус") key = "Status";
             else if (key == "Верифицировано") key = "Verified";
+            else if (key == "Джерело") key = "Source";
             values[key] = value;
         }
     }
-    printf "\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\"\n",
+    printf "\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\",\"%s\"\n",
            values["FIO"], values["DOB"], values["Position"], values["Unit"], values["Passport"], values["Passport_Issue_Date"],
            values["Issued_By"], values["Taxpayer_Number"], values["Social_Security_Number"], values["Address"], values["Phone_Number"],
-           values["Social_Media"], values["Email"], values["Status"], values["Verified"], image_file
+           values["Social_Media"], values["Email"], values["Status"], values["Verified"], values["Source"], image_file
 }' "$input_file" >> "$output_file"

@@ -4,8 +4,8 @@ from werkzeug.exceptions import abort
 import os
 import logging
 
-logging.basicConfig(filename='occ_flask_app.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
-logging.debug('Start of program')
+# logging.basicConfig(filename='occ_flask_app.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+# logging.debug('Start of program')
 
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__)) #for absolute path
 templates_dir = os.path.join(PROJECT_ROOT, 'templates')
@@ -13,8 +13,6 @@ app = Flask(__name__, template_folder=templates_dir)
 app.static_folder = os.path.join(PROJECT_ROOT, 'static')
 db = os.path.join(PROJECT_ROOT, 'database.db')
 
-logging.debug(f"Template folder: {app.template_folder}")
-logging.debug(f"Static folder: {app.static_folder}")
 print(f"Static folder: {app.static_folder}")
 print(f"Template folder: {app.template_folder}")
 

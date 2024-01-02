@@ -29,6 +29,7 @@ cursor.execute('''
         Email TEXT,
         Status TEXT,
         Verified TEXT,
+        Source TEXT,
         Image_File TEXT
     )
 ''')
@@ -39,7 +40,7 @@ with open(csv_file, 'r', encoding='utf-8') as file:
     next(reader)  # Skip the header row
     for row in reader:
         # Insert data, omitting the 'id' and 'created' fields as they are auto-populated
-        cursor.execute('INSERT INTO posts (FIO, DOB, Position, Unit, Passport, Passport_Issue_Date, Issued_By, Taxpayer_Number, Social_Security_Number, Address, Phone_Number, Social_Media, Email, Status, Verified, Image_File) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', row)
+        cursor.execute('INSERT INTO posts (FIO, DOB, Position, Unit, Passport, Passport_Issue_Date, Issued_By, Taxpayer_Number, Social_Security_Number, Address, Phone_Number, Social_Media, Email, Status, Verified, Source, Image_File) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', row)
 
 # Commit the changes and close the connection
 conn.commit()

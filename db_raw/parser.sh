@@ -20,6 +20,12 @@ BEGIN { RS = ""; FS = "\n" }
             image_file = $i;
             continue;
         }
+        # Replace all '/' with ''
+        { gsub("/", ""); }
+
+        # Replace all '_' with '-'
+        { gsub("_", "-"); }
+
         if ($i ~ /: /) {
             split($i, kv, ": ");
             key = kv[1];

@@ -30,10 +30,27 @@ def get_post(post_id):
         abort(404)
     return post
 
+#show unit
+def get_unit(post_unit):
+    conn = get_db_connection()
+    units = conn.execute('SELECT * FROM posts WHERE Unit = ?',
+                        (post_unit,)).fetchall()
+    conn.close()
+    if units is None:
+        abort(404)
+    return units
+
 @app.route('/<int:post_id>')
 def post(post_id):
     post = get_post(post_id)
     return render_template('post.html', post=post)
+
+#show unit
+@app.route('/unit/<post_unit>')
+def unit(post_unit):
+    print(f"Requested Post Units are: {post_unit}")
+    units = get_unit(post_unit)
+    return render_template('index.html', posts=units)
 
 @app.route('/')
 def index():

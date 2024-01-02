@@ -6,6 +6,9 @@
         <a href="{{ url_for('post', post_id=post['id'])}}">
             <h2>{{ post['FIO'] }}</h2>
         </a>
+        <a href="{{ url_for('unit', post_unit=post['Unit'])}}">
+            <h2>{{ post['Unit'] }}</h2>
+        </a>
         <span class="badge badge-primary">{{ post['DOB'] }}</span>
         <span class="badge badge-primary">{{ post['Position'] }}</span>
 

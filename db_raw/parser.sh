@@ -20,8 +20,8 @@ BEGIN { RS = ""; FS = "\n" }
             image_file = $i;
             continue;
         }
-        # Replace all '/' with ''
-        { gsub("/", ""); }
+        # Replace all '/ч' with ''
+        { gsub("/ч", "ч"); }
 
         # Replace all '_' with '-'
         { gsub("_", "-"); }

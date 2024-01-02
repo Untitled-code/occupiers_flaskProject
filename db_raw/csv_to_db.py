@@ -36,10 +36,9 @@ cursor.execute('''
 
 # Read the CSV file and insert data into the SQLite database
 with open(csv_file, 'r', encoding='utf-8') as file:
-    reader = csv.reader(file)
-    next(reader)  # Skip the header row
-    for row in reader:
-        # Insert data, omitting the 'id' and 'created' fields as they are auto-populated
+    csv_reader = csv.reader(file)
+    header = next(csv_reader)  # Skip header
+    for row in sorted(csv_reader, key=lambda x: x[0]):  # Sort by the first column (FIO)        # Insert data, omitting the 'id' and 'created' fields as they are auto-populated
         cursor.execute('INSERT INTO posts (FIO, DOB, Position, Unit, Passport, Passport_Issue_Date, Issued_By, Taxpayer_Number, Social_Security_Number, Address, Phone_Number, Social_Media, Email, Status, Verified, Source, Image_File) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', row)
 
 # Commit the changes and close the connection

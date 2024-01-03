@@ -1,12 +1,10 @@
 import sqlite3
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from werkzeug.exceptions import abort
 import os
 import logging
 
-# logging.basicConfig(filename='occ_flask_app.log', level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
-# logging.debug('Start of program')
-
+POSTS_PER_PAGE = 10
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__)) #for absolute path
 templates_dir = os.path.join(PROJECT_ROOT, 'templates')
 app = Flask(__name__, template_folder=templates_dir)
@@ -54,10 +52,14 @@ def unit(post_unit):
 
 @app.route('/')
 def index():
+    page = request.args.get('page', 1, type=int)
     conn = get_db_connection()
-    posts = conn.execute('SELECT * FROM posts').fetchall()
+    total_posts = conn.execute('SELECT COUNT(*) FROM posts').fetchone()[0]
+    total_pages = (total_posts // POSTS_PER_PAGE) + (1 if total_posts % POSTS_PER_PAGE > 0 else 0)
+    offset = (page - 1) * POSTS_PER_PAGE
+    posts = conn.execute('SELECT * FROM posts LIMIT ? OFFSET ?', (POSTS_PER_PAGE, offset)).fetchall()
     conn.close()
     print(f"Template folder: {app.template_folder}")
     logging.debug(f"Static folder: {app.static_folder}")
-    return render_template('index.html', posts=posts)
+    return render_template('index.html', posts=posts, page=page, total_pages=total_pages)
 

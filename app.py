@@ -48,7 +48,7 @@ def post(post_id):
 def unit(post_unit):
     print(f"Requested Post Units are: {post_unit}")
     units = get_unit(post_unit)
-    return render_template('index.html', posts=units)
+    return render_template('unit.html', posts=units)
 
 @app.route('/')
 def index():

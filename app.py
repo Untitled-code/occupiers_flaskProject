@@ -4,7 +4,7 @@ from werkzeug.exceptions import abort
 import os
 import logging
 
-POSTS_PER_PAGE = 10
+POSTS_PER_PAGE = 20
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__)) #for absolute path
 templates_dir = os.path.join(PROJECT_ROOT, 'templates')
 app = Flask(__name__, template_folder=templates_dir)

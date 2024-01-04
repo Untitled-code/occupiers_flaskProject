@@ -7,23 +7,31 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/style.css">
 
-    <title>{% block title %} {% endblock %}</title>
+    <meta name="title" content="">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="Реєстр російських окупантів, що перебували на території Миколаївської області">
+    <meta property="og:site_name" content="NIKCENTER.ORG">
+    <meta property="og:url" content="https://invaders.nikcenter.org/">
+    <meta property="og:description" content="З 24 лютого 2022 року окупанти зруйнували та пошкодили в області майже десять тисяч житлових будинків, вбили та поранили 97 дітей. Nikcenter зібрав дані про російських загарбників, які ймовірно перебували на території Миколаївщини або обстрілювали регіон, а відтак - могли бути причетними до військових злочинів проти мирних українців.
+">
+    <meta property="og:type" content="DATA">
+    <meta property="og:image" content="/static/bg.jpg">
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1080" />
+    <meta property="og:image:type" content="image/jpeg" />
+
   </head>
-  <body>
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <a class="navbar-brand" href="{{ url_for('index')}}">FlaskBlog</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">About</a>
-            </li>
-            </ul>
-        </div>
-    </nav>
+
+  <div style="padding: 25px; max-width: 1200px; margin: 0 auto;">
+  <div><a href="https://nikcenter.org"> <img height="50px" width="50px" class="mx-auto d-block" src="/static/nikcenter-logo-c-32.svg" /></a></div>
+      <h1><a href="/">Реєстр російських окупантів, що перебували на території Миколаївської області</a></h1>
+  </div>
+
     <div class="container">
         {% block content %} {% endblock %}
     </div>

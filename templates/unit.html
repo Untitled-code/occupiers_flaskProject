@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
 
+<div class="container">
 {% block content %}
-    <h2>{% block title %} {{ posts[0]['Unit'] }} {% endblock %}</h2>
+    <div class="row">
+        <h3><center>{% block title %} {{ posts[0]['Unit'] }} {% endblock %}</center></h3>
     {% for post in posts %}
+        <div class="col-6 card bg-dark p-2">
         <a href="{{ url_for('post', post_id=post['id'])}}">
-            <h4>{{ post['FIO'] }}</h4>
+        <h2>{{ post['FIO'] }}</h2>
         </a>
-        <span class="badge badge-primary">{{ post['DOB'] }}</span>
-        <span class="badge badge-primary">{{ post['Position'] }}</span>
-
-        <hr>
+        <p>{{ post['DOB'] }} | {{ post['Position'] }}</p>
+        </div>
     {% endfor %}
-
+    </div>
+    </div>
 {% endblock %}

@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div class="row">
+    <div class="col-md-2"><img class="img-fluid" src="{{ url_for('static', filename='images/' + post['Image_File']) }}" alt="{{ post['FIO'] }} Image"></div>
+    <div class="col-md-8">
     <h2>{% block title %} {{ post['FIO'] }} {% endblock %}</h2>
-    <span class="badge badge-primary">Військовий підрозділ: {{ post['Unit'] }}</span>
-    </br>
-    <span class="badge badge-primary">Посада, звання: {{ post['Position'] }}</span>
+    <p>Військовий підрозділ: {{ post['Unit'] }}</p>
+    <p>Посада, звання: {{ post['Position'] }}</p>
     <p>Дата народження: {{ post['DOB'] }}</p>
     <p>Адреса: {{ post['Address'] }}</p>
     <p>Телефон: {{ post['Phone_Number'] }}</p>
@@ -13,7 +15,6 @@
     <p>Соцмережі: {{ post['Social_Media'] }}</p>
     <p>Електронна пошта: {{ post['Email'] }}</p>
     <p>Джерело: {{ post['Source'] }}</p>
-
-    <!-- Include the image -->
-    <img src="{{ url_for('static', filename='images/' + post['Image_File']) }}" alt="{{ post['FIO'] }} Image">
+</div>
+        </div>
 {% endblock %}

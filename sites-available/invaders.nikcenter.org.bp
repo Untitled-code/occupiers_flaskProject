@@ -1,0 +1,20 @@
+<VirtualHost *:80>
+    #ServerName invaders.nikcenter.org
+    ServerName 5.255.43.212
+    ServerAlias www.invaders.nikcenter.org
+    ServerAdmin investigator@nikcenter.org
+    WSGIDaemonProcess invaders.nikcenter.org python-path=/var/www/invaders.nikcenter.org:/var/www/invaders.nikcenter.org/.venv/lib/python3.10/site-packages threads=5
+    WSGIScriptAlias / /var/www/invaders.nikcenter.org/occ_flask.wsgi
+    <Directory /var/www/invaders.nikcenter.org/>
+        WSGIProcessGroup invaders.nikcenter.org
+        WSGIApplicationGroup %{GLOBAL}        
+        Require all granted
+    </Directory>
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+    RewriteEngine on
+    RewriteCond %{SERVER_NAME} =www.invaders.nikcenter.org [OR]
+    RewriteCond %{SERVER_NAME} =invaders.nikcenter.org
+    RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
+</VirtualHost>
+
